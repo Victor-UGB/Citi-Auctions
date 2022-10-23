@@ -1,0 +1,57 @@
+{% extends 'auctions/layout.html'%}
+
+{% block title %}
+Listing
+{% endblock%}
+
+{% block body%}
+
+<div>
+{% if user.is_authenticated %}
+    {% if listing_in_watchlist %}
+        <form action="{% url 'remove_from_watchlist' listing.id %}" method="POST">
+            {%csrf_token%}
+            <input type="submit" value="Remove from watchlist"></input>
+        </form>
+    {% else %}
+        <form action="{% url 'add_to_watchlist' listing.id %}" method="POST">
+            {%csrf_token%}
+            <input type="submit" value="Add to watchlist">
+        </form>
+    {% endif %}
+{%else%}
+
+{% endif %}
+</div>
+
+<div>
+    <h4>{{listing.name}}</h4>
+    <img src="{{ listing.image }}">
+    <h4>{{ listing.owner }}</h4>
+    <form action="", method="POST">
+        <input type="">Enter your bid</input>
+        <input type="submit" value="Submit Bid">
+    </form>
+    
+    <a href="">Add to Watchlist</a>
+    <a
+</div>
+
+<div>
+    <form action="{% url 'add_comment' listing.id %}" name="comment_form" method="POST">
+        {%csrf_token%}
+        {{new_comment_form}}
+        <input type="submit" value="Add comment">
+    </form>
+</div>
+
+<div style="margin-top: 3rem;">
+    {%for comment in comments %}
+    <div>
+        <h8>Comments</h8>
+        <h4>{{comment.comment}}</h4>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
