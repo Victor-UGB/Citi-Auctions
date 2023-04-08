@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from .forms import NewListingForm, NewCommentForm
+from .forms import NewListingForm, NewCommentForm, NewBidForm
 from .models import Category, User, Listing, Comment, Bid
 
 
@@ -86,6 +86,30 @@ def display_category(request):
             'categories' : all_categories,         
         })
 
+def bid(request, pk):
+    # get listing and user who placed bid
+    listing = get_object_or_404(Listing, pk=pk)
+    user = request.user
+
+    # check that request method is POST
+    if request.method == "POST":
+
+        #get bid form and pass  request to check validity
+        bid_form = NewBidForm(request.POST)
+        print(bid_form)
+        
+        # if valid save
+        if bid_form.is_valid():
+            bid = bid_form.save(commit=False)
+            bid.bidder = user
+            bid.listing = listing
+            bid.save()
+            return HttpResponseRedirect(reverse, "listing", args=(pk,))
+    
+        return render(request, "auctions/index.html")
+
+
+
 
 def listing(request, pk):
     #get the listing by id
@@ -117,7 +141,8 @@ def remove_from_watchlist(request, pk):
 def add_to_watchlist(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
     user = request.user
-
+    print(user)
+    print(request)
     listing.watchlist.add(user)
     return HttpResponseRedirect(reverse("listing", args=(pk, )))
 

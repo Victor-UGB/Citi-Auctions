@@ -15,16 +15,10 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
-class Bid(models.Model):
-    bidder = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="bidder"),
-    bid = models.IntegerField()
-
-
 class Listing(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=1200)
     starting_price = models.FloatField(null=True, blank=True)
-    bid_price = models.ForeignKey(Bid, on_delete=models.CASCADE, blank=True, null=True, related_name="top_bid")
     owner = models.ForeignKey(User, on_delete=models.CASCADE, blank= True, null=True, related_name="user")
     image = models.URLField(null=True)
     is_active = models.BooleanField(default=True)
@@ -34,7 +28,10 @@ class Listing(models.Model):
     def __str__ (self):
         return self.name
 
-
+class Bid(models.Model):
+    bidder = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="bidder"),
+    bid = models.IntegerField()
+    listing = models.ForeignKey(Listing, on_delete=models.CASCADE, blank=True, null=True, related_name="bids")
 
 
 class Comment(models.Model):

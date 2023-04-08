@@ -28,7 +28,8 @@ Listing
     <h4>{{listing.name}}</h4>
     <img src="{{ listing.image }}">
     <h4>{{ listing.owner }}</h4>
-    <form action="", method="POST">
+    <form action="{%url 'bid' listing.id%}", method="POST">
+        {% csrf_token %}
         <input type="">Enter your bid</input>
         <input type="submit" value="Submit Bid">
     </form>
