@@ -28,14 +28,33 @@ Listing
     <h4>{{listing.name}}</h4>
     <img src="{{ listing.image }}">
     <h4>{{ listing.owner }}</h4>
+    <select>
+        <option>{{number_of_bids}} bids have been made</option>
+        {%for bid in bids %}
+        <option>
+        <li>Bid: {{bid.bid}}</li>
+        <p>Placed by {{bid.bidder}}</p>
+        </option>
+        {% endfor %}
+    </select>
+    <h1>Current Price: {{highest_bid}}</h1>
+    <h2>{{number_of_bids}} bids have been made</h2>
     <form action="{%url 'bid' listing.id%}", method="POST">
         {% csrf_token %}
-        <input type="">Enter your bid</input>
+        {{form}}
+        {% comment %} <input type="">Enter your bid</input> {% endcomment %}
         <input type="submit" value="Submit Bid">
     </form>
+    {% if messages %}
+    <ul>
+        {% for message in messages%}
+        <li {% if message.tags %} class = {{message.tag}} {%endif%}>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     
     <a href="">Add to Watchlist</a>
-    <a
+    
 </div>
 
 <div>
@@ -51,6 +70,7 @@ Listing
     <div>
         <h8>Comments</h8>
         <h4>{{comment.comment}}</h4>
+        <h4>{{comment.author}}</h4>
     </div>
     {% endfor %}
 </div>
