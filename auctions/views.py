@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from .forms import NewListingForm, NewCommentForm, NewBidForm
 from .models import Category, User, Listing, Comment, Bid
+from django.contrib import messages
 
 
 
@@ -48,6 +49,7 @@ def add_listing(request):
         if new_form.is_valid():
             full_form = new_form.save(commit=False)
             full_form.bid_price = bid
+            full_form.owner = user
             full_form.save()
             return HttpResponseRedirect(reverse('index'))
         return render(request, "auctions/add_listing.html", {
@@ -58,6 +60,15 @@ def add_listing(request):
     return render(request, "auctions/add_listing.html", {
         'form' : NewListingForm()
     })
+
+
+def close_listing(request, pk):
+    listing = Listing.objects.get(pk=pk)
+    if request.user == listing.owner:
+        listing.is_active = False
+        listing.save()
+        print(listing.is_active)
+        return HttpResponseRedirect(reverse('listing', args=(pk, )))
 
 def add_comment(request, pk):
     user = request.user
@@ -87,26 +98,44 @@ def display_category(request):
         })
 
 def bid(request, pk):
+    #Solution One
     # get listing and user who placed bid
     listing = get_object_or_404(Listing, pk=pk)
     user = request.user
+    bid_form = NewBidForm(request.POST)
+
+    # Solution Two
+    listing_object = Listing.objects.get(pk=pk)
+    bids_on_listing = listing_object.bids.all()
+    max_bid = max([k.bid for k in bids_on_listing ])
+    # print(i)
+    # print(f"The bids {bids_on_listing}")
+    # bid_form1 = NewBidForm()
+    # bid_form1_attr = bid_form1.Meta.widgets['bid'].attrs['min']
+    # # bid_form1[bid_form1_attr] = i
+    # bid_form1.Meta.widgets['bid'].attrs['min'] = i
+    # print(bid_form1)
 
     # check that request method is POST
-    if request.method == "POST":
+    # if request.method == "POST":
+    #     #get bid form and pass  request to check validity
 
-        #get bid form and pass  request to check validity
-        bid_form = NewBidForm(request.POST)
-        print(bid_form)
-        
-        # if valid save
-        if bid_form.is_valid():
+    #     print(bid_form)
+    #     # if valid save
+
+    # Solution 3 final
+    if bid_form.is_valid():
+        if bid_form.cleaned_data['bid'] > max_bid:
             bid = bid_form.save(commit=False)
             bid.bidder = user
             bid.listing = listing
             bid.save()
-            return HttpResponseRedirect(reverse, "listing", args=(pk,))
-    
-        return render(request, "auctions/index.html")
+            messages.success(request, "Bid placed! We have a new floor price")
+            return HttpResponseRedirect(reverse( "listing", args=(pk,)))
+        messages.error(request, "Bid could not be placed, higher bid exists")
+        return HttpResponseRedirect(reverse("listing", args=(pk,)))
+
+    print("Error")
 
 
 
@@ -116,6 +145,20 @@ def listing(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
     listing_in_watchlist = request.user in listing.watchlist.all()
     comments_in_listing = Comment.objects.filter(listing=listing)
+    bids_in_listing = Bid.objects.filter(listing = listing)
+    number_of_bids = bids_in_listing.count()
+    print(type(bids_in_listing))
+    is_owner = listing.owner == request.user
+    print(listing.is_active)
+
+    # get the highest bid amongst bids
+    max_bid = max([i.bid for i in bids_in_listing ])
+    print(max_bid)
+    # i = 0
+    # highest_bid = max([value for (key, value) in bids_in_listing.items() if value > i])
+
+
+
 
     # top_bid = Bid.objects.filter(listing=listing)
     #return html pagee with the listing information
@@ -123,7 +166,13 @@ def listing(request, pk):
         'listing' : listing,
         'listing_in_watchlist' : listing_in_watchlist,
         'comments' : comments_in_listing,
-        'new_comment_form' : NewCommentForm()
+        'new_comment_form' : NewCommentForm(),
+        'form' : NewBidForm(),
+        'bids' : bids_in_listing,
+        "number_of_bids": number_of_bids,
+        "highest_bid": max_bid,
+        "is_owner": is_owner,
+        "is_active": listing.is_active,
     })
 
 
@@ -131,9 +180,9 @@ def listing(request, pk):
 
 def remove_from_watchlist(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
-
     user = request.user
     listing.watchlist.remove(user)
+    
 
     return HttpResponseRedirect(reverse("listing", args=(pk, )))
 

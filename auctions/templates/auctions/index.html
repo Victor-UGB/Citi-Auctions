@@ -17,11 +17,12 @@
     <div>
         {%for listing in listings%}
         <h1>Title: {{listing.name}}</h1>
-        <img src="{{listing.image}}" />
+        <img class="img" src="{{listing.image}}" />
         <p>{{listing.description}}</p>
-        <h5>{{listing.price}}</h5>
-        <h5>{{user}}</h5>
-        <h5>{{listing.category}}</h5>
+        <h5>Starting Price: {{listing.starting_price}}</h5>
+        <h5>Listed by: {{listing.owner}}</h5>
+        <h5>Category: {{listing.category}}</h5>
+        <h5>Listed on: {{listing.created_at}}
         <a href="{% url 'listing' listing.id %}"> View Listing</a>
         {% comment %} <a href="{%url 'listing' auction.id %}">View Item</a>{% endcomment %}
         <p>{{comments}}</p>

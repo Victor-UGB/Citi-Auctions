@@ -37,5 +37,5 @@ class NewBidForm(ModelForm):
         fields = {'bid'}
 
         widgets = {
-            'bid' : forms.TextInput(attrs={'form' : 'form-control', 'placeholder' : 'Enter your bid'})
+            'bid' : forms.NumberInput(attrs={'class' : 'form-control', 'placeholder' : 'Enter your bid', 'min':20})
         }
