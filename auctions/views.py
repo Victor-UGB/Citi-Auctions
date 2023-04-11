@@ -152,7 +152,10 @@ def listing(request, pk):
     print(listing.is_active)
 
     # get the highest bid amongst bids
-    max_bid = max([i.bid for i in bids_in_listing ])
+    if len(bids_in_listing) > 0:
+        max_bid = max([i.bid for i in bids_in_listing ])
+    else:
+        max_bid = listing.starting_price
     print(max_bid)
     # i = 0
     # highest_bid = max([value for (key, value) in bids_in_listing.items() if value > i])
