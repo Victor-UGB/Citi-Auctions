@@ -49,6 +49,7 @@ def add_listing(request):
         if new_form.is_valid():
             full_form = new_form.save(commit=False)
             full_form.bid_price = bid
+            full_form.owner = user
             full_form.save()
             return HttpResponseRedirect(reverse('index'))
         return render(request, "auctions/add_listing.html", {
@@ -59,6 +60,15 @@ def add_listing(request):
     return render(request, "auctions/add_listing.html", {
         'form' : NewListingForm()
     })
+
+
+def close_listing(request, pk):
+    listing = Listing.objects.get(pk=pk)
+    if request.user == listing.owner:
+        listing.is_active = False
+        listing.save()
+        print(listing.is_active)
+        return HttpResponseRedirect(reverse('listing', args=(pk, )))
 
 def add_comment(request, pk):
     user = request.user
@@ -113,13 +123,14 @@ def bid(request, pk):
     #     print(bid_form)
     #     # if valid save
 
-    # Solution 3 final solution
+    # Solution 3 final
     if bid_form.is_valid():
         if bid_form.cleaned_data['bid'] > max_bid:
             bid = bid_form.save(commit=False)
             bid.bidder = user
             bid.listing = listing
             bid.save()
+            messages.success(request, "Bid placed! We have a new floor price")
             return HttpResponseRedirect(reverse( "listing", args=(pk,)))
         messages.error(request, "Bid could not be placed, higher bid exists")
         return HttpResponseRedirect(reverse("listing", args=(pk,)))
@@ -137,6 +148,8 @@ def listing(request, pk):
     bids_in_listing = Bid.objects.filter(listing = listing)
     number_of_bids = bids_in_listing.count()
     print(type(bids_in_listing))
+    is_owner = listing.owner == request.user
+    print(listing.is_active)
 
     # get the highest bid amongst bids
     max_bid = max([i.bid for i in bids_in_listing ])
@@ -158,6 +171,8 @@ def listing(request, pk):
         'bids' : bids_in_listing,
         "number_of_bids": number_of_bids,
         "highest_bid": max_bid,
+        "is_owner": is_owner,
+        "is_active": listing.is_active,
     })
 
 
@@ -165,9 +180,9 @@ def listing(request, pk):
 
 def remove_from_watchlist(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
-
     user = request.user
     listing.watchlist.remove(user)
+    
 
     return HttpResponseRedirect(reverse("listing", args=(pk, )))
 
