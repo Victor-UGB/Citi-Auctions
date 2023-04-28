@@ -30,58 +30,101 @@ Listing
 </div>
 
 <div>
-    <h4>{{listing.name}}</h4>
-    <img class="img" src="{{ listing.image }}">
-    <h4>{{ listing.owner }}</h4>
-    <select>
-        <option>{{number_of_bids}} bids have been made</option>
-        {%for bid in bids %}
-        <option>
-        <li>Bid: {{bid.bid}}</li>
-        <p>Placed by {{bid.bidder}}</p>
-        </option>
-        {% endfor %}
-    </select>
-    <h1>Current Price: {{highest_bid}}</h1>
-    <h2>{{number_of_bids}} bids have been made</h2>
-    {% if is_active %}
-        <form action="{%url 'bid' listing.id%}", method="POST">
-            {% csrf_token %}
-            {{form}}
-            {% comment %} <input type="">Enter your bid</input> {% endcomment %}
-            <input type="submit" value="Submit Bid">
-        </form>
-    {% else %}
-        <h1>This auction has been closed </h1>
-    {% endif %}
-    {% if messages %}
-    <ul>
-        {% for message in messages%}
-        <li {% if message.tags %} class = {{message.tag}} {%endif%}>{{message}}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <div class="listings-container">
+        <div class="listing-body">
+                <div style="padding:1rem 0rem; display:flex; justify-content:space-between;">
+                    <div><h5>{{listing.name}}</h5></div>
+                    <div class="listing-detail">
+                        <div class="details-container">
+                            <div class="details">
+                                <h8>Category: </h8>
+                                <h8>{{listing.category}}</h8>
+                            </div>
+                            <div class="details">
+                                <h8>Listed by: </h8>
+                                <h8>{{listing.owner}}</h8>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="img" src="{{listing.image}}" />
+                <div style="display:flex; justify-content:space-between; padding:0rem 1rem; margin-bottom:1rem;">
+                    <div style="padding:1rem 0rem;">
+                    <h7>Description:</h7>
+                    <p class="listing-description">{{listing.description}}</p>
+                    </div>
+                    <div style= "padding: 1rem 1rem;">
+                    <h7 style="float: right;">Starting Price: </h7>
+                    <h5>${{listing.starting_price}}</h5>
+                    </div>
+                </div>
+                {% comment %} <h1>Current Price: {{highest_bid}}</h1> {% endcomment %}
+                {% comment %} <h2>{{number_of_bids}} bids have been made</h2> {% endcomment %}
+                <hr>
+                <div class ="bidders-list">
+                    <select>
+                        <option selected disabled hidden>{{number_of_bids}} bids have been made</option>
+                        {%for bid in bids %}
+                        <option>
+                        <li>Bid: {{bid.bid}}</li>
+                        <p>Placed by {{bid.bidder}}</p>
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% if is_active %}
+                <div class="bid-form-container">
+                    <form class="form1" action="{%url 'bid' listing.id%}", method="POST">
+                        {% csrf_token %}
+                        {{form}}
+                        {% comment %} <input type="">Enter your bid</input> {% endcomment %}
+                        <input class="submit-bid" type="submit" value="Submit Bid">
+                    </form>
+                {% else %}
+                    <h1>This auction has been closed </h1>
+                </div>
+                {% endif %}
+                <div class="listing-date">
+                    <h7>Listed on: </h7>
+                    <h7>{{listing.created_at}}</h7>
+                </div>
+            </div>
+            
+        </div>
     
+    <div>
+        {% if messages %}
+        <ul>
+            {% for message in messages%}
+            <li {% if message.tags %} class = {{message.tag}} {%endif%}>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    <div>
     <a href="">Add to Watchlist</a>
     
 </div>
 
-<div>
-    <form action="{% url 'add_comment' listing.id %}" name="comment_form" method="POST">
-        {%csrf_token%}
-        {{new_comment_form}}
-        <input type="submit" value="Add comment">
-    </form>
-</div>
-
-<div style="margin-top: 3rem;">
-    {%for comment in comments %}
-    <div>
-        <h8>Comments</h8>
-        <h4>{{comment.comment}}</h4>
-        <h4>{{comment.author}}</h4>
+<div style="padding:2rem;">
+    <div style="margin-top: 3rem;">
+        <div>
+            <h8 style="font-weight:bold; font-size:2rem;">Comments</h8>
+        </div>
+        {%for comment in comments %}
+        <div class="comment-details">
+            <h4>{{comment.author}}</h4>
+            <h3 class="">{{comment.comment}}</h3>
+            
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    <div style="margin-top: 1.5rem;">
+        <form action="{% url 'add_comment' listing.id %}" name="comment_form" method="POST">
+            {%csrf_token%}
+            {{new_comment_form}}
+            <input class="submit-bid" type="submit" value="Add comment">
+        </form>
+    </div>
 </div>
 
 {% endblock %}

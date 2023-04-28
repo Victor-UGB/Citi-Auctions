@@ -94,7 +94,8 @@ def display_category(request):
         category_collection  = Listing.objects.filter(is_active = True, category = category)
         return render(request, "auctions/index.html", {
             'listings' : category_collection,
-            'categories' : all_categories,         
+            'categories' : all_categories,
+            'selected_category' : category,         
         })
 
 def bid(request, pk):
