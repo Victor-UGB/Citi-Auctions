@@ -1,7 +1,174 @@
 body {
-    padding: 10px;
+    padding: 0px;
 }
 
 .img{
     width: 30rem;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-brand{
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+    padding: .2rem 1.5rem;
+}
+.auth-status{
+    font-size: x-large;
+    padding: 0px 2rem;
+    font-weight: 500;
+    color: gray;
+}
+.nav{
+    font-size: 2rem;
+}
+.nav > li:nth-child(1){
+    font-weight: 700;
+}
+
+.nav-link{
+    color: darkgray;
+}
+.subheading{
+    margin-bottom: 2rem;
+}
+.subheading1{
+    font-size: 1.4rem;
+}
+.subheading2{
+    font-size: 3rem;
+}
+.category-container{
+    padding: 3rem;
+}
+.form1{
+    display: flex; 
+    flex-direction: column;
+}
+.form-control{
+    padding: 2rem 1.8rem;
+    font-size: 1.8rem;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+/* .category-container h2{
+    margin-bottom: 3rem;
+} */
+.category-container label{
+    font-size: x-large;
+    font-weight: 600;
+    color: gray;
+}
+.category-container select{
+    padding: 1rem 1.8rem;
+    font-size: 2rem;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.category-container input{
+    padding: .8rem;
+    margin: 1rem 0rem;
+    font-size: 2rem; 
+    font-weight: 600;
+    border: none;
+    background-color: black;
+    color: azure;
+}
+.submit-bid{
+    padding: .8rem 2rem;
+    margin: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: 600;
+    border: none;
+    background-color: black;
+    color: azure;
+}
+.listings-container{
+    padding: 1rem;
+}
+.listing-body{
+    padding: 2rem 2rem 0rem 2rem;
+}
+.img{
+    height: 40rem;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 5px;
+}
+.listing-body h1{
+    font-size: 4rem;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    padding: .2rem 0rem 0rem 0rem;
+}
+.listing-body p{
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    padding: 0rem 0rem;
+}
+.listing-body h5{
+    font-size: 3rem;
+    font-weight: 700;
+}
+.details-container{
+    display: flex;
+    justify-content:start;
+}
+.details-container div:nth-child(1){
+    padding: 0rem 3rem 0rem 0rem;
+}
+.details{
+    color: gray;
+    
+}
+.listing-detail{
+    margin-top: 1rem;
+    align-self: center;
+}
+.listing-date{
+    padding: 1rem 0rem;
+}
+.listing-body h7{
+    font-size: x-large;
+    font-weight: 20;
+    color: gray;
+}
+.listing-body h8{
+    font-size: large;
+    font-weight: 200;
+    color: gray;
+}
+.listing-description{
+    font-size: xx-large !important;
+}
+.view-listing-button{
+    padding: .8rem;
+    margin: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: 600;
+    border: none;
+    background-color: black;
+    color: azure;
+    width: 100%;
+}
+.bid-form-container{
+    padding: 1rem 1.5rem;
+}
+.bidders-list{
+    padding: 1rem 0rem 0rem 0rem;
+}
+.bidders-list select{
+    padding: .2rem 1.5rem;
+    font-size: x-large;
+    border: none;
+}
+.comment-details{
+    padding: 1.5rem;
+    background-color: rgb(245, 245, 245);
+}
+.comment-details h3{
+    padding: 1rem;
 }

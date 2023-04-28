@@ -24,9 +24,11 @@ class NewCommentForm(ModelForm):
         model = Comment
 
         fields = {'comment', }
+
+        labels = {'comment': ''}
+
         widgets = {
             'comment' : forms.Textarea(attrs={'rows': 5, 'class' : "form-control", 'placeholder': 'Write your comment'}),
-
         }
 
 
@@ -35,6 +37,8 @@ class NewBidForm(ModelForm):
         model = Bid
 
         fields = {'bid'}
+
+        labels = {'bid' : ''}
 
         widgets = {
             'bid' : forms.NumberInput(attrs={'class' : 'form-control', 'placeholder' : 'Enter your bid', 'min':20})
