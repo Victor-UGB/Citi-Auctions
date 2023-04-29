@@ -6,18 +6,49 @@
 
 
 {% block body %}
-<h1>Watchlist</h1>
+<div style="padding:0rem 3rem; margin-top: 3rem;">
+        <h1 class="subheading2">Your Watchlist</h1>
+</div>
 <div>
     {%for listing in listings%}
-    <h1>Title: {{listing.name}}</h1>
-    <img src="{{listing.image}}" />
-    <p>{{listing.description}}</p>
-    <h5>{{listing.price}}</h5>
-    <h5>{{user}}</h5>
-    <h5>{{listing.category}}</h5>
-    <a href="{% url 'listing' listing.id %}"> View Listing</a>
-    {% comment %} <a href="{%url 'listing' auction.id %}">View Item</a>{% endcomment %}
-    <p>{{comments}}</p>
+    <div class="listings-container">
+        <div class="listing-body">
+                <div class="listing-date">
+                    <h7>Listed on: </h7>
+                    <h7>{{listing.created_at}}</h7>
+                </div>
+                <img class="img" src="{{listing.image}}" />
+                <div style="display:flex; justify-content:space-between;">
+                    <div style="padding:1rem 0rem 0rem 0rem;">
+                    <h7>Item:</h7>
+                    <h5>{{listing.name}}</h5>
+                    <p style="margin:0;">{{listing.description}}</p>
+                    </div>
+                    <div style= "padding: 1rem 1rem;">
+                    <h7>Starting Price: </h7>
+                    <h5>${{listing.starting_price}}</h5>
+                    </div>
+                </div>
+                <div class="listing-detail">
+                    <div class="details-container">
+                        <div class="details">
+                            <h7>Category: </h7>
+                            <h7>{{listing.category}}</h7>
+                        </div>
+                        <div class="details">
+                            <h7>Listed by: </h7>
+                            <h7>{{listing.owner}}</h7>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 0rem 2rem;">
+                <button class="view-listing-button"><a style="color: white;" href="{% url 'listing' listing.id %}"> View Listing</a></button>
+            </div>
+                {% comment %} <a href="{%url 'listing' auction.id %}">View Item</a>{% endcomment %}
+            <p>{{comments}}</p>
+        </div>
+    </div>
     {%endfor%}
 </div>
 {% endblock %}

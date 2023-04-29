@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div style="padding: 0rem 2rem;">
-                <button class="view-listing-button"><a style="color: white;" href="{% url 'listing' listing.id %}"> View Listing</a></button>
+                <a style="color: white;" href="{% url 'listing' listing.id %}"><button class="view-listing-button"> View Listing</button></a>
             </div>
                 {% comment %} <a href="{%url 'listing' auction.id %}">View Item</a>{% endcomment %}
             <p>{{comments}}</p>
@@ -61,9 +61,9 @@
     </div>
     {%endfor%}
     {% else %}
-    <div class="listing-container">
-        <div class"listing-body">
-            <h5>No Active Listing In This Category</div>
+    <div class="listings-container">
+        <div class="listing-body">
+            <h5 style="text-align: center; color:gainsboro;">No active listing in this category</div>
         </div>
     </div>
     {% endif %}

@@ -11,10 +11,10 @@ class NewListingForm(ModelForm):
         
         fields = ('name', 'description', 'starting_price', 'image', 'category')
         widgets = {
-            'name' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: Rainbow Striped Cotton Coat'}),
-            'description' : forms.Textarea(attrs={'class' : 'form-control', 'placeholder': 'Describe this item'}),
-            'starting_price' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your bidding price'}),
-            'image' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Attach image URL'}),
+            'name' : forms.TextInput(attrs={'class': 'form-control1', 'placeholder': 'Ex: Rainbow Striped Cotton Coat'}),
+            'description' : forms.Textarea(attrs={'rows': 6, 'class' : 'form-control1', 'placeholder': 'Describe this item'}),
+            'starting_price' : forms.TextInput(attrs={'class': 'form-control1', 'placeholder': 'Enter your bidding price'}),
+            'image' : forms.TextInput(attrs={'class': 'form-control1', 'placeholder': 'Attach image URL'}),
             # 'category' : forms.ModelChoiceField(queryset=Category.objects.all() ),
         }
 

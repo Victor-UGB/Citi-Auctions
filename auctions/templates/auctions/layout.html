@@ -26,8 +26,8 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                        <a href="{%url 'add_listing'%}">Add Listing</a>
-                        <a href="{%url 'watchlist'%}"> Watchlist </a>
+                        <a class="nav-link" href="{%url 'add_listing'%}">Add Listing</a>
+                        <a class="nav-link" href="{%url 'watchlist'%}"> Watchlist </a>
                     </li>
                 {% else %}
                     <li class="nav-item">

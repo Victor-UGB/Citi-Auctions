@@ -26,6 +26,8 @@ body {
 }
 .nav > li:nth-child(1){
     font-weight: 700;
+    display: flex;
+    align-items: center;
 }
 
 .nav-link{
@@ -47,11 +49,24 @@ body {
     display: flex; 
     flex-direction: column;
 }
+.form1 label{
+    font-size: x-large;
+    margin-top: 2rem;
+    font-weight: 700;
+    color: gray;
+}
 .form-control{
     padding: 2rem 1.8rem;
     font-size: 1.8rem;
     border: 1px solid gray;
     border-radius: 4px;
+}
+.form-control1{
+    padding: 2rem 1.8rem;
+    font-size: 1.8rem;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin:.5rem 0rem;
 }
 /* .category-container h2{
     margin-bottom: 3rem;
@@ -84,6 +99,16 @@ body {
     border: none;
     background-color: black;
     color: azure;
+}
+.submit-bid2{
+    padding: .8rem 2rem;
+    margin: 1rem 0rem;
+    font-size: 2rem;
+    font-weight: 600;
+    border: 1px solid black;
+    border-left: none;
+    background-color: white;
+    color: black;
 }
 .listings-container{
     padding: 1rem;
@@ -171,4 +196,52 @@ body {
 }
 .comment-details h3{
     padding: 1rem;
+}
+
+/* LOGIN PAGE AND SIGNUP*/
+.login-container{
+    margin-top: 0rem;
+    padding: 2rem;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.login-intro{
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+.login-intro h1{
+    font-size: 5rem;
+}
+.login-form-container{
+    width: 100%;
+    padding: 3rem 0rem;
+}
+.login-form .form-group input{
+    padding: 3rem 2rem;
+    font-size: 2.2rem;
+}
+.login-button{
+    padding: 1.2rem 2rem;
+    font-size: 2.5rem;
+    width: 100%;
+    background-color: black !important;
+    border: none;
+}
+.splash-img{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+}
+.splash-text{
+    position:absolute;
+    bottom: 2rem;
+    left: 2rem;
+    color: white;
+    font-weight: 700;
 }
