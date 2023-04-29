@@ -5,11 +5,17 @@
 {% endblock %}
     
 {% block body %}
-<form action="{% url 'add_listing' %}" method="POST">
+<div class="bid-form-container">
+    <div style="padding:1rem 1rem 0rem 2rem;">
+        <h1>Auction Item</h1>
+        <h4>Kindly provide accurate information about item for auction</h4>
+    </div>
+<form class="form1" action="{% url 'add_listing' %}" method="POST">
     {% csrf_token %}
     {{form}}
-    <input type='submit' value='Place Listing'>
+    <input class="submit-bid" type='submit' value='Place Listing'>
 </form>
 <p>{{message}}</p>
+</div>
 
 {% endblock %}
