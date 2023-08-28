@@ -10,19 +10,19 @@ body {
     justify-content: space-between;
 }
 .navbar-brand{
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 700;
     margin: 0;
-    padding: .2rem 1.5rem;
+    padding: .2rem .7rem;
 }
 .auth-status{
-    font-size: x-large;
-    padding: 0px 2rem;
+    font-size: medium;
+    padding: 0px .8rem;
     font-weight: 500;
     color: gray;
 }
 .nav{
-    font-size: 2rem;
+    font-size: 1rem;
 }
 .nav > li:nth-child(1){
     font-weight: 700;
@@ -34,24 +34,24 @@ body {
     color: darkgray;
 }
 .subheading{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 .subheading1{
-    font-size: 1.4rem;
+    font-size: 1rem;
 }
 .subheading2{
-    font-size: 3rem;
+    font-size: 1.5rem;
 }
 .category-container{
-    padding: 3rem;
+    padding: 1rem;
 }
 .form1{
     display: flex; 
     flex-direction: column;
 }
 .form1 label{
-    font-size: x-large;
-    margin-top: 2rem;
+    font-size: medium;
+    margin-top: 1rem;
     font-weight: 700;
     color: gray;
 }
@@ -72,38 +72,37 @@ body {
     margin-bottom: 3rem;
 } */
 .category-container label{
-    font-size: x-large;
     font-weight: 600;
     color: gray;
 }
 .category-container select{
-    padding: 1rem 1.8rem;
-    font-size: 2rem;
+    padding: .4rem 1rem;
+    font-size: 1rem;
     border: 1px solid gray;
     border-radius: 4px;
 }
 .category-container input{
-    padding: .8rem;
-    margin: 1rem 0rem;
-    font-size: 2rem; 
+    padding: .4rem;
+    margin: .5rem 0rem;
+    font-size: 1rem; 
     font-weight: 600;
     border: none;
     background-color: black;
     color: azure;
 }
 .submit-bid{
-    padding: .8rem 2rem;
-    margin: 1rem 0rem;
-    font-size: 2rem;
+    padding: .4rem 1rem;
+    margin: .5rem 0rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
     background-color: black;
     color: azure;
 }
 .submit-bid2{
-    padding: .8rem 2rem;
-    margin: 1rem 0rem;
-    font-size: 2rem;
+    padding: .4rem 1rem;
+    margin: .5rem 0rem;
+    font-size: 1rem;
     font-weight: 600;
     border: 1px solid black;
     border-left: none;
@@ -111,39 +110,39 @@ body {
     color: black;
 }
 .listings-container{
-    padding: 1rem;
+    padding: .1rem;
 }
 .listing-body{
-    padding: 2rem 2rem 0rem 2rem;
+    padding: 1rem .2rem 0rem .2rem;
 }
 .img{
-    height: 40rem;
+    height: 30rem;
     width: 100%;
     object-fit: fill;
     border-radius: 5px;
 }
 .listing-body h1{
-    font-size: 4rem;
+    font-size: 2rem;
     font-weight: 600;
     color: rgb(0, 0, 0);
     padding: .2rem 0rem 0rem 0rem;
 }
 .listing-body p{
-    font-size: 1.5rem;
+    font-size: .7rem;
     color: rgb(0, 0, 0);
     font-weight: 400;
     padding: 0rem 0rem;
 }
 .listing-body h5{
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 .details-container{
     display: flex;
-    justify-content:start;
+    justify-content:space-between;
 }
 .details-container div:nth-child(1){
-    padding: 0rem 3rem 0rem 0rem;
+    padding: 0rem 1.5rem 0rem 0rem;
 }
 .details{
     color: gray;
@@ -154,25 +153,25 @@ body {
     align-self: center;
 }
 .listing-date{
-    padding: 1rem 0rem;
+    padding: .5rem 0rem;
 }
 .listing-body h7{
-    font-size: x-large;
+    font-size: medium;
     font-weight: 20;
     color: gray;
 }
 .listing-body h8{
-    font-size: large;
+    font-size: medium;
     font-weight: 200;
     color: gray;
 }
 .listing-description{
-    font-size: xx-large !important;
+    font-size: large !important;
 }
 .view-listing-button{
-    padding: .8rem;
+    padding: .4rem;
     margin: 1rem 0rem;
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
     background-color: black;
@@ -186,12 +185,12 @@ body {
     padding: 1rem 0rem 0rem 0rem;
 }
 .bidders-list select{
-    padding: .2rem 1.5rem;
-    font-size: x-large;
+    padding: .2rem 1rem;
+    font-size: medium;
     border: none;
 }
 .comment-details{
-    padding: 1.5rem;
+    padding: 1rem;
     background-color: rgb(245, 245, 245);
 }
 .comment-details h3{
@@ -201,7 +200,7 @@ body {
 /* LOGIN PAGE AND SIGNUP*/
 .login-container{
     margin-top: 0rem;
-    padding: 2rem;
+    padding: 1rem;
     align-items: baseline;
     display: flex;
     flex-direction: column;
@@ -215,19 +214,19 @@ body {
     position: relative;
 }
 .login-intro h1{
-    font-size: 5rem;
+    font-size: 2rem;
 }
 .login-form-container{
     width: 100%;
-    padding: 3rem 0rem;
+    padding: 1.5rem 0rem;
 }
 .login-form .form-group input{
-    padding: 3rem 2rem;
-    font-size: 2.2rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
 }
 .login-button{
-    padding: 1.2rem 2rem;
-    font-size: 2.5rem;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
     width: 100%;
     background-color: black !important;
     border: none;
@@ -240,8 +239,37 @@ body {
 }
 .splash-text{
     position:absolute;
-    bottom: 2rem;
-    left: 2rem;
+    bottom: 1rem;
+    left: 1rem;
     color: white;
     font-weight: 700;
 }
+.main{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    body{
+        display: flex;
+    }
+    .nav-line{
+        display: none;
+    }
+    .main-body{
+        max-width: 788px;
+    }
+    .navbar{
+        align-items: flex-start;
+        height: 100dvh;
+        position: fixed;
+        flex-direction: column;
+        justify-content: start;
+        gap: 2rem
+    }
+    .nav{
+        flex-direction: column;
+    }
+}
+
