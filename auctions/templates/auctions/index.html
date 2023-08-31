@@ -18,9 +18,10 @@
 
             <input type="submit" value="Filter">
         </form>
-        <div class="main-body">
+        
         {% if listings %}
             {%for listing in listings%}
+            <div class="main-body">
             <div class="listings-container">
                 <div class="listing-body">
                         <div class="listing-date">
@@ -66,8 +67,9 @@
                 <h5 style="text-align: center; color:gainsboro;">No active listing in this category</div>
             </div>
         </div>
+        </div>
     {% endif %}
-    </div>
+    
     </div>
     
 {% endblock %}

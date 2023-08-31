@@ -42,10 +42,6 @@ def add_listing(request):
 
         new_form = NewListingForm(user_form)
         
-        print(form)
-        print(new_form)
-        print(f"This is the new bid: {form_price}")
-        
         if new_form.is_valid():
             full_form = new_form.save(commit=False)
             full_form.bid_price = bid

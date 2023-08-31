@@ -106,20 +106,20 @@ Listing
 </div>
 
 
-<div style="padding:2rem;">
-    <div style="margin-top: 3rem;">
+<div style="padding:1rem;">
+    <div style="margin-top: 1.5rem;">
         <div>
-            <h8 style="font-weight:bold; font-size:2rem;">Comments</h8>
+            <h8 style="font-weight:bold; font-size:1rem;">Comments</h8>
         </div>
         {%for comment in comments %}
         <div class="comment-details">
-            <h4>{{comment.author}}</h4>
-            <h3 class="">{{comment.comment}}</h3>
+            <h6>{{comment.author}}</h6>
+            <h5 style="font-size:medium; font-weight:lighter;">{{comment.comment}}</h5>
             
         </div>
         {% endfor %}
     </div>
-    <div style="margin-top: 1.5rem;">
+    <div style="margin-top: .7rem;">
         <form action="{% url 'add_comment' listing.id %}" name="comment_form" method="POST">
             {%csrf_token%}
             {{new_comment_form}}

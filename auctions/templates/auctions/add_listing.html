@@ -6,9 +6,9 @@
     
 {% block body %}
 <div class="bid-form-container">
-    <div style="padding:1rem 1rem 0rem 2rem;">
-        <h1>Auction Item</h1>
-        <h4>Kindly provide accurate information about item for auction</h4>
+    <div style="padding:1rem 1rem 0rem 1rem;">
+        <h1 class="subheading1">Auction Item</h1>
+        <h4 class="subheading2">Kindly provide accurate information about item for auction</h4>
     </div>
 <form class="form1" action="{% url 'add_listing' %}" method="POST">
     {% csrf_token %}

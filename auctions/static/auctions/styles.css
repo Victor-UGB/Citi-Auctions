@@ -32,6 +32,14 @@ body {
 
 .nav-link{
     color: darkgray;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    padding-block: .8rem;
+}
+ul{
+    list-style: none;
+    padding: 0rem;
 }
 .subheading{
     margin-bottom: 1rem;
@@ -56,14 +64,14 @@ body {
     color: gray;
 }
 .form-control{
-    padding: 2rem 1.8rem;
-    font-size: 1.8rem;
+    padding: 1.5rem 1rem;
+    font-size: 1.1rem;
     border: 1px solid gray;
     border-radius: 4px;
 }
 .form-control1{
-    padding: 2rem 1.8rem;
-    font-size: 1.8rem;
+    padding: 1rem 1rem;
+    font-size: 1rem;
     border: 1px solid gray;
     border-radius: 4px;
     margin:.5rem 0rem;
@@ -113,7 +121,7 @@ body {
     padding: .1rem;
 }
 .listing-body{
-    padding: 1rem .2rem 0rem .2rem;
+    padding: 1rem .5rem 0rem .5rem;
 }
 .img{
     height: 30rem;
@@ -246,19 +254,35 @@ body {
 }
 .main{
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
+    background-color: #f9f9f9;
+    margin-top: 1rem;
+}
+.listing-menu{
+    display: none;
+}
+.menu-item-container{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-@media (min-width: 768px) {
-    body{
+@media (min-width: 768px) and (max-width: 1023px) {
+    .body-container{
         display: flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        position: relative;
+        /* flex-direction: column; */
     }
     .nav-line{
         display: none;
     }
     .main-body{
         max-width: 788px;
+        /* justify-content: space-between; */
     }
     .navbar{
         align-items: flex-start;
@@ -266,10 +290,64 @@ body {
         position: fixed;
         flex-direction: column;
         justify-content: start;
-        gap: 2rem
+        gap: 2rem;
+        flex-basis: 20%;
+        margin-right: 2rem;
+        padding-right: 2rem;
+    }
+    .main{
+        flex-basis: 60%;
+        justify-content: center;
+        left: 30%;
+        position: relative;
     }
     .nav{
         flex-direction: column;
+    }
+    .listing-menu{
+        display: flex;
+        flex-basis: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .body-container{
+        display: flex;
+        gap: 2rem;
+        flex-wrap: nowrap;
+        position: relative;
+        /* flex-direction: column; */
+    }
+    .nav-line{
+        display: none;
+    }
+    .main-body{
+        max-width: 788px;
+        /* justify-content: space-between; */
+    }
+    .navbar{
+        align-items: flex-start;
+        height: 100dvh;
+        position: fixed;
+        flex-direction: column;
+        justify-content: start;
+        gap: 2rem;
+        flex-basis: 20%;
+        margin-right: 2rem;
+        padding-right: 2rem;
+    }
+    .main{
+        flex-basis: 50%;
+        justify-content: center;
+        left: 25%;
+        position: relative;
+    }
+    .nav{
+        flex-direction: column;
+    }
+    .listing-menu{
+        display: flex;
+        flex-basis: 20%;
     }
 }
 
