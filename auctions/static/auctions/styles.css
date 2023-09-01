@@ -268,6 +268,13 @@ ul{
     align-items: center;
     gap: 1rem;
 }
+.nav{
+    display: none;
+    position: absolute;
+    top: 5rem;
+    right: 1rem;
+    background-color: #f9f9f9;
+}
 
 @media (min-width: 768px) and (max-width: 1023px) {
     .body-container{
@@ -276,6 +283,15 @@ ul{
         flex-wrap: nowrap;
         position: relative;
         /* flex-direction: column; */
+    }
+    .nav{
+        display: block;
+        position: relative;
+        left: .6rem;
+        top: 2rem;
+    }
+    .burger-nav {
+        display: none;
     }
     .nav-line{
         display: none;
@@ -317,6 +333,15 @@ ul{
         flex-wrap: nowrap;
         position: relative;
         /* flex-direction: column; */
+    }
+    .nav{
+        display: block;
+        position: relative;
+        left: .6rem;
+        top: 2rem;
+    }
+    .burger-nav {
+        display: none;
     }
     .nav-line{
         display: none;

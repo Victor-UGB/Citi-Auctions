@@ -9,6 +9,7 @@
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
+    
     <body>
         <div class="body-container">
             <div class="navbar">
@@ -22,7 +23,7 @@
                         {% endif %}
                     </div>
                 </div>
-                <div class="nav">
+                <div class="nav" id="nav-id">
                     <ul>
                         <li class="nav-item">
                             <div class="menu-item-container">
@@ -63,6 +64,9 @@
                         {% endif %}
                     </ul>
                 </div>
+                <button class="burger-nav" id="burger-nav-id">
+                    <i class="material-icons">menu</i>
+                </button>
             </div>
 
             {% comment %} <div class="listing-menu">
@@ -80,5 +84,21 @@
             </div>
             
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function(){
+                const el = document.getElementById('burger-nav-id')
+                const nav = document.getElementById('nav-id')
+                el.onclick = handNavClick;
+
+                function handNavClick(){
+                    if(nav.style.display === "none"){
+                        nav.style.display = "block";
+                    }else{
+                        nav.style.display = "none";
+                    }
+                }
+                
+            });
+        </script>
     </body>
 </html>
