@@ -61,7 +61,7 @@ def add_listing(request):
 def close_listing(request, pk):
     listing = Listing.objects.get(pk=pk)
     if request.user == listing.owner:
-        listing.is_active = False
+        # listing.is_active = False
         listing.save()
         print(listing.is_active)
         return HttpResponseRedirect(reverse('listing', args=(pk, )))
