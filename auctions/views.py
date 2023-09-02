@@ -32,21 +32,21 @@ def add_listing(request):
 
         form_price = request.POST['starting_price']
         # Bind starting_price to a new bids object
-        bid = Bid(bid= int(form_price))  
-        bid.save()
-        print(f'printing bid... {bid.bid}')
+
         # Rewrite the starting_price of POST form to be an instance of the Bid object 
 
         # request.POST['starting_price'] = bid
         user_form = request.POST
 
-        new_form = NewListingForm(user_form)
+        new_listing_form = NewListingForm(user_form)
         
-        if new_form.is_valid():
-            full_form = new_form.save(commit=False)
-            full_form.bid_price = bid
+        if new_listing_form.is_valid():
+            full_form = new_listing_form.save(commit=False)
+            full_form.bid_price = form_price
             full_form.owner = user
             full_form.save()
+            bid = Bid(bid=int(form_price), bidder=request.user, listing=full_form)
+            bid.save()
             return HttpResponseRedirect(reverse('index'))
         return render(request, "auctions/add_listing.html", {
             'form' : NewListingForm(),
@@ -98,13 +98,16 @@ def bid(request, pk):
     #Solution One
     # get listing and user who placed bid
     listing = get_object_or_404(Listing, pk=pk)
+    print(listing)
     user = request.user
     bid_form = NewBidForm(request.POST)
 
     # Solution Two
     listing_object = Listing.objects.get(pk=pk)
+    print(listing_object)
     bids_on_listing = listing_object.bids.all()
-    max_bid = max([k.bid for k in bids_on_listing ])
+    print(bids_on_listing)
+    max_bid = max([k.bid for k in bids_on_listing])
     # print(i)
     # print(f"The bids {bids_on_listing}")
     # bid_form1 = NewBidForm()
@@ -154,6 +157,9 @@ def listing(request, pk):
     else:
         max_bid = listing.starting_price
     print(max_bid)
+
+    max_bidder = [i.bidder for i in bids_in_listing if i.bid == max_bid]
+    print(f"This is the max bidder{max_bidder[0].name}")
     # i = 0
     # highest_bid = max([value for (key, value) in bids_in_listing.items() if value > i])
 
@@ -173,6 +179,7 @@ def listing(request, pk):
         "highest_bid": max_bid,
         "is_owner": is_owner,
         "is_active": listing.is_active,
+        "highest_bidder": max_bidder[0].name
     })
 
 

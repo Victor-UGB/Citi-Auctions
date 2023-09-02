@@ -82,7 +82,8 @@ Listing
                     </form>
                 {% else %}
                     <div class="bid-form-container">
-                    <h1>This auction has been closed </h1>
+                    <h1 class="listing-description">This auction has been closed </h1>
+                    <h5>Sold to {{highest_bidder}} for ${{highest_bid}}</h5>
                     </div>
                 </div>
                 {% endif %}
@@ -96,7 +97,7 @@ Listing
     
     <div>
         {% if messages %}
-        <ul>
+        <ul class="notice">
             {% for message in messages%}
             <li {% if message.tags %} class = {{message.tag}} {%endif%}>{{message}}</li>
             {% endfor %}

@@ -76,6 +76,13 @@ ul{
     border-radius: 4px;
     margin:.5rem 0rem;
 }
+.notice{
+    position: absolute;
+    top: 1rem;
+    text-align: center;
+    width: 100%;
+    font-weight: 800;
+}
 /* .category-container h2{
     margin-bottom: 3rem;
 } */
@@ -161,7 +168,7 @@ ul{
     align-self: center;
 }
 .listing-date{
-    padding: .5rem 0rem;
+    padding: .5rem;
 }
 .listing-body h7{
     font-size: medium;
