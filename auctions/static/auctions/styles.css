@@ -497,12 +497,14 @@ ul{
     }
     .listing-page-desc-view{
         display: flex;
+        justify-content: space-between;
         /* flex-wrap: wrap; */
     }
     .listing-page-desc-container{
         display: block;
         padding:0rem 1rem; 
         margin-bottom:1rem;
+        width:20rem;
     }
     .listing-page-img-container{
         max-width: 40rem;
@@ -581,9 +583,7 @@ ul{
         width: 60rem;
         display: flex;
         gap: 2rem;
-        padding-block: 2rem;
         padding-inline: 0rem !important;
-        margin-top: 1rem;
     }
     .comment-div{
         width: 45%;
