@@ -6,14 +6,14 @@
     
 {% block body %}
 <div class="bid-form-container">
-    <div style="padding:1rem 1rem 0rem 1rem;">
+    <div class="auction-title" style="padding-bottom: 1rem;">
         <h1 class="subheading1">Auction Item</h1>
-        <h4 class="subheading2">Kindly provide accurate information about item for auction</h4>
+        <h4 class="subheading3">Kindly provide accurate information about item for auction</h4>
     </div>
-<form class="form1" action="{% url 'add_listing' %}" method="POST">
+<form class="form2" action="{% url 'add_listing' %}" method="POST">
     {% csrf_token %}
     {{form}}
-    <input class="submit-bid" type='submit' value='Place Listing'>
+    <input class="submit-bid" type='submit' value='Place Listing' style="margin-top:1rem;">
 </form>
 <p>{{message}}</p>
 </div>

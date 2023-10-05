@@ -3,14 +3,14 @@
 {% block body %}
     <div class= "category-container">
         <div class="subheading">
-            <h7 class="subheading1">Active Listings</h7>
+            <h7 class="subheading1">Active listings</h7>
             <h2 class="subheading2"> {{selected_category}}</h2>
         </div>
         <form action="{% url 'display_category' %}" method="POST"  class="form1">
             {%csrf_token%}
-            <label for="categories">Pick a category of listings:</label>
+            {% comment %} <label for="categories">Category</label> {% endcomment %}
             <select name="categories">
-                <option value="none" selected disabled hidden>Choose filter option</option>
+                <option value="none" selected disabled hidden>Select Category</option>
                 {% for category in categories %}
                 <option> {{category }} </option>
                 {% endfor %}
@@ -18,47 +18,56 @@
 
             <input type="submit" value="Filter">
         </form>
-        
+        <div class="items-layout">
         {% if listings %}
             {%for listing in listings%}
             <div class="main-body">
             <div class="listings-container">
+                <a class="" style="color:gray; text-decoration: none;" href="{% url 'listing' listing.id %}">
                 <div class="listing-body">
-                        <div class="listing-date">
-                            <h7>Listed on: </h7>
-                            <h7>{{listing.created_at}}</h7>
+                        <div style="width:100%;">
+                            <div class="img-div"><img class="img" src="{{listing.image}}" /></div>
                         </div>
-                        <img class="img" src="{{listing.image}}" />
-                        <div style="display:flex; justify-content:space-between;">
-                            <div style="padding:1rem 0rem 0rem 0rem;">
-                            <h7>Item:</h7>
-                            <h5>{{listing.name}}</h5>
-                            <p style="margin:0;">{{listing.description}}</p>
-                            </div>
-                            <div style= "padding: 1rem 1rem;">
-                            <h7>Starting Price: </h7>
-                            <h5>${{listing.starting_price}}</h5>
-                            </div>
-                        </div>
-                        <div class="listing-detail">
-                            <div class="details-container">
-                                <div class="details">
-                                    <h7>Category: </h7>
-                                    <h7>{{listing.category}}</h7>
+                        <div>
+                            <div style="display:flex; flex-direction:column;  justify-content:space-between;">
+                                <div style="padding:0rem 0rem 0rem 0rem;">
+                                <h7></h7>
+                                
+                                <div class="listing-date">
+                                    <h7>{{listing.created_at}}</h7>
                                 </div>
-                                <div class="details">
-                                    <h7>Listed by: </h7>
-                                    <h7>{{listing.owner}}</h7>
+                                <div class="" style="display:flex; gap: 1rem; align-items: center;">
+                                    <h5 class="listing-name">{{listing.name}} </h5>
+                                    {% comment %} <h5 style="margin:0;">{{listing.description}}</h5> {% endcomment %}
+                                </div>
+                                </div>
+                                
+                            </div>
+                            <div class="listing-detail">
+                                <div class="details-container">
+                                    <div class="details">
+                                        <h7>Category: </h7>
+                                        <h7>{{listing.category}}</h7>
+                                    </div>
+                                    <div class="details">
+                                        <h7>Listed by: </h7>
+                                        <h7>{{listing.owner}}</h7>
+                                    </div>
                                 </div>
                             </div>
+                            <div style= "padding: 0rem 0rem;">
+                                <h7>Starting Price: </h7>
+                                <h5>${{listing.starting_price}}</h5>
+                                </div>
                         </div>
                     </div>
                     <div style="padding: 0rem 2rem;">
-                        <a style="color: white;" href="{% url 'listing' listing.id %}"><button class="view-listing-button"> View Listing</button></a>
+                        {% comment %} <a style="color: white;" href="{% url 'listing' listing.id %}"><button class="view-listing-button"> View Listing</button></a> {% endcomment %}
                     </div>
                         {% comment %} <a href="{%url 'listing' auction.id %}">View Item</a>{% endcomment %}
                     <p>{{comments}}</p>
                 </div>
+                </a>
             </div>
             {%endfor%}
         {% else %}
@@ -69,7 +78,7 @@
         </div>
         </div>
     {% endif %}
-    
+    </div>
     </div>
     
 {% endblock %}

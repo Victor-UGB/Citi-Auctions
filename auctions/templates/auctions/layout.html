@@ -13,8 +13,8 @@
     <body>
         <div class="body-container">
             <div class="navbar">
-                <div>
-                    <h1 class ="navbar-brand">Citi Auctions</h1>
+                <div class="navbar-brand-container">
+                    <h1 class ="navbar-brand">CITI AUCTIONS</h1>
                     <div class = "auth-status">
                         {% if user.is_authenticated %}
                             Signed in as <strong>{{ user.username }}</strong>.
@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <div class="menu-item-container">
                                 <a class="nav-link" href="{% url 'index' %}">
-                                    <i class="material-icons">home</i>
+                                    {% comment %} <i class="material-icons">home</i> {% endcomment %}
                                     Active Listings
                                 </a>
                             </div>
@@ -36,28 +36,28 @@
                         {% if user.is_authenticated %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'logout' %}">
-                                    <i class="material-icons">exit_to_app</i>
+                                    {% comment %} <i class="material-icons">exit_to_app</i> {% endcomment %}
                                     Log Out
                                 </a>
                                 <a class="nav-link" href="{%url 'add_listing'%}">
-                                    <i class="material-icons">playlist_add</i>
+                                    {% comment %} <i class="material-icons">playlist_add</i> {% endcomment %}
                                     Add Listing
                                 </a>
                                 <a class="nav-link" href="{%url 'watchlist'%}"> 
-                                    <i class="material-icons">bookmark</i>
+                                    {% comment %} <i class="material-icons">bookmark</i> {% endcomment %}
                                     Watchlist 
                                 </a>
                             </li>
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'login' %}">
-                                    <i class="material-icons">login</i>
+                                    {% comment %} <i class="material-icons">login</i> {% endcomment %}
                                     Log In
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'register' %}">
-                                    <i class="material-icons">person_add</i>
+                                    {% comment %} <i class="material-icons">person_add</i> {% endcomment %}
                                     Sign Up
                                 </a>
                             </li>
