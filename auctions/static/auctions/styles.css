@@ -459,6 +459,14 @@ ul{
         position: relative;
         /* flex-direction: column; */
     }
+    .login-container{
+        margin-top: 0rem;
+        padding: 1rem;
+        align-items: baseline;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }    
     .img-div{
         width: 20rem;
         height: 12rem;
