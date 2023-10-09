@@ -159,10 +159,10 @@ def listing(request, pk):
     print(max_bid)
 
     max_bidder = [i.bidder for i in bids_in_listing if i.bid == max_bid]
-    print(f"This is the max bidder{max_bidder[0].name}")
-    # i = 0
-    # highest_bid = max([value for (key, value) in bids_in_listing.items() if value > i])
-
+    if len(max_bidder) > 0:
+        max_bidder = max_bidder[0].name
+    else:
+        max_bidder = "None" 
 
 
 
@@ -179,7 +179,7 @@ def listing(request, pk):
         "highest_bid": max_bid,
         "is_owner": is_owner,
         "is_active": listing.is_active,
-        "highest_bidder": max_bidder[0].name
+        "highest_bidder": max_bidder
     })
 
 
