@@ -378,6 +378,7 @@ ul{
     }
     .burger-nav {
         display: none;
+        background-color: transparent;
     }
     .nav-line{
         display: none;

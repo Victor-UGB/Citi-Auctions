@@ -9,7 +9,7 @@
         <form action="{% url 'display_category' %}" method="POST"  class="form1">
             {%csrf_token%}
             {% comment %} <label for="categories">Category</label> {% endcomment %}
-            <select name="categories">
+            <select name="categories" style="color:black;">
                 <option value="none" selected disabled hidden>Select Category</option>
                 {% for category in categories %}
                 <option> {{category }} </option>
